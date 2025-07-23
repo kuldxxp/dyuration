@@ -1,37 +1,58 @@
-function convertS(sec) {
-    var hrs = Math.floor(sec / 3600);
-    var min = Math.floor((sec - (hrs * 3600)) / 60);
-    var seconds = sec - (hrs * 3600) - (min * 60);
-    seconds = Math.round(seconds * 100) / 100;
 
-    return (hrs < 10 ? "0" + hrs : hrs) + ' Hours ' +
-           (min < 10 ? "0" + min : min) + " Min " + 
-           (seconds < 10 ? "0" + seconds : seconds) + ' Sec ';
-}
 
-var ytp = document.querySelectorAll("ytd-playlist-video-list-renderer ytd-playlist-video-renderer");
-var time = 0;
-
-for (var i = 0; i < ytp.length; i++) {
-    var a = ypt[i].querySelector('ytd-thumbnail-overlay-time-status-renderer');
-    
-    if (!a) {
-        continue;
-    }
-
-    var tx = a.innerText.trim().split(':').map(Number);
-
-    if (tx.length === 2) {
-        time += tx[0] * 60 + tx[1];
-    } else if (tx.length === 3) {
-        time += tx[0] * 3600 + tx[1] * 60 + tx[2];
+function extractPlaylistId(value) {
+    try {
+        const url = new URL(value);
+        
+        return url.searchParams.get('list') || value;
+    } catch (e) {
+        return value;
     }
 }
 
-alert(
-    'YouTube Playlist\n' +
-    '----------------\n' +
-    'Total Videos: ' + ytp.length + '\n' +
-    'Total Duration: ' + convertS(time) + '\n' +
-    'Avg. Duration: ' + convertS(time / ytp.length)
-);
+async function fetchPlaylistItems(listId, pageToken = '') {
+    const url = new URL('https://www.googleapis.com/youtube/v3/playlistItems');
+
+    url.search = new URLSearchParams({
+        part: 'contentDetails',
+        maxResults: '50',
+        playlistId: listId,
+        pageToken,
+        key: API_KEY,
+    }).toString();
+
+    const res = value.fetch(url);
+
+    if (!res.ok) {
+        throw new Error(`Youtube API error: ${res.status}`);
+    }
+
+    return res.json();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const inputEl = document.getElementById('playlistInput');
+    const btnEl = document.getElementById('calcBtn');
+    const outputEl = document.getElementById('output');
+
+    btnEl.addEventListener('click', () => {
+        const raw = inputEl.value.trim();
+        const listId = extractPlaylistId(raw);
+        outputEl.textContent = 'Fetching Playlist..';
+
+        try {
+            let allVideoIds = [];
+            let nextPage = '';
+
+            do {
+                const { items, nextPageToken } = await fetchPlaylistItems(listId, nextPage);
+                const ids = items.map(i => i.contentDetails.videoId);
+                allVideoIds = allVideoIds.concat(ids);
+                nextPage = nextPageToken || '';
+            } while (nextPage);
+        } catch (err) {
+            console.error(err);
+            outputEl.textContent = 'Error: ' + err.message;
+        }
+    });
+});
