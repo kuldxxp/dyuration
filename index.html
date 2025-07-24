@@ -8,16 +8,21 @@
 </head>
 <body>
     <div class="container">
-        <h1> Dyuration </h1>
+        <div class="heading">
+            <h1> Dyuration </h1>
+        </div>
 
-        <input type="text" id="playlistInput" placeholder="Enter Playlist ID or full URL">
+        <div class="input">
+            <input type="text" id="playlistInput" placeholder="Enter Playlist ID or full URL">
+            <button id="calcBtn">GO</button>
+        </div>
 
-        <button id="calcBtn">GO</button>
-
-        <div id="output"></div>
+        <div class="out">
+            <div id="output"></div>
+        </div>
     </div>
     
-    <script src="config.js"></script>
+    <script src="config.js"></script>   
     <script src="script.js"></script>
 </body>
 </html>

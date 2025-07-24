@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Sankofa+Display&display=swap');
+
 html {
     box-sizing: border-box;
 }
@@ -14,4 +16,51 @@ body {
 .container {
     width: 1200px;
     margin: 0 auto;
+    margin-top: 7rem;
+
+    /* background-color: aqua; */
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5rem;
+}
+
+.heading h1 {
+    font-size: 4rem;
+    font-weight: 600;
+    font-family: "Sankofa Display", sans-serif;
+    letter-spacing: 0.4rem;
+}
+
+.input {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.input input {
+    font-size: 1.6rem;
+    font-family: "Archivo", sans-serif;
+    border-radius: 6px;
+    width: 45%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.input button {
+    font-size: 1.6rem;
+    font-family: "Archivo", sans-serif;
+    border-radius: 6px;
+    background-color: rgba(103, 211, 36, 0.846);
+    color: aliceblue;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.out {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
 }
