@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 String(mins).padStart(hours > 0 ? 2 : 1, '0') + ':' +
                 String(secs).padStart(2, '0');
 
+            outputEl.style.display = "block";
             outputEl.textContent =
                 `Playlist has ${allVideoIds.length} videos — total duration: ${formatted}`;
             console.log(`Total duration: ${formatted}`);

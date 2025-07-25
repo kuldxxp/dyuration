@@ -7,20 +7,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="heading">
-            <h1> Dyuration </h1>
-        </div>
+    <header>
+        <div id="nav-parent">
+            <div id="nav-child">
+                <img src="#" alt="logo">
 
-        <div class="input">
-            <input type="text" id="playlistInput" placeholder="Enter Playlist ID or full URL">
-            <button id="calcBtn">GO</button>
+                <div id="source">
+                    <a href="#"> Source </a>
+                </div>
+            </div>
         </div>
+    </header>
 
-        <div class="out">
-            <div id="output"></div>
+    <main>
+        <div class="container">
+            <div class="heading">
+                <h1> Dyuration </h1>
+            </div>
+
+            <div class="input">
+                <input type="text" id="playlistInput" placeholder="Enter Playlist ID or full URL">
+                <button id="calcBtn">GO</button>
+            </div>
+
+            <div class="out">
+                <div id="output"></div>
+            </div>
         </div>
-    </div>
+    </main>
     
     <script src="config.js"></script>   
     <script src="script.js"></script>

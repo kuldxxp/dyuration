@@ -11,14 +11,39 @@ html {
 body {
     padding: 0;
     margin: 0;
+    background-color: #0D1117;
+}
+
+#nav-parent {
+    width: 68.75rem;
+    margin: 0 auto;
+}
+
+#nav-child {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.6rem;
+}
+
+#nav-child img {
+    width: 70px;    
+}
+
+#nav-child a {
+    text-decoration: none;
+    font-family: "Archivo", sans-serif;
+    color: #9ba3b4;
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: 0.3rem;
+    border: 1px solid white;
+    border-radius: 0.3rem;
 }
 
 .container {
     width: 1200px;
     margin: 0 auto;
     margin-top: 7rem;
-
-    /* background-color: aqua; */
 }
 
 .heading {
@@ -32,6 +57,7 @@ body {
     font-weight: 600;
     font-family: "Sankofa Display", sans-serif;
     letter-spacing: 0.4rem;
+    color: #9ba3b4;
 }
 
 .input {
@@ -53,14 +79,24 @@ body {
     font-size: 1.6rem;
     font-family: "Archivo", sans-serif;
     border-radius: 6px;
-    background-color: rgba(103, 211, 36, 0.846);
+    background-color: #4daafc;
     color: aliceblue;
-    border: 1px solid transparent;
+    border: 1px solid aliceblue;
     cursor: pointer;
 }
 
 .out {
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 5rem;
+}
+
+#output {
+    font-size: 1.6rem;
+    font-family: "Archivo", sans-serif;
+    padding: 1rem;
+    color: #9ba3b4;
+    border: 1px solid aliceblue;
+    border-radius: 0.6rem;
+    display: none;
 }
